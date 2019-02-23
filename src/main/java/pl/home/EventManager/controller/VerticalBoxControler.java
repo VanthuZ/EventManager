@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
 
@@ -36,7 +37,7 @@ public class VerticalBoxControler implements Initializable {
     @FXML
     private TableColumn<Event, String> columnName;
     @FXML
-    private TableColumn<Event, String> columnDate;
+    private TableColumn<Event, LocalDate> columnDate;
 
     private EventView eventView;
 
@@ -50,7 +51,7 @@ public class VerticalBoxControler implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
       columnName.setCellValueFactory(c ->  c.getValue().nameProperty());
-      
+      columnDate.setCellValueFactory(c -> c.getValue().getDate());
 
     }
 
@@ -58,5 +59,18 @@ public class VerticalBoxControler implements Initializable {
 
     public void newBTpress(ActionEvent actionEvent) throws IOException {
        eventView.loadNewEventView(null);
+    }
+
+    public void viewEvent() {
+
+        Event tmpEvent = tvEvents.getSelectionModel().getSelectedItem();
+        if(tmpEvent != null){
+            lbName.setText(tmpEvent.getName());
+            lbDate.setText(tmpEvent.getDate().getValue().toString());
+            lbCity.setText(tmpEvent.getCity());
+            lbTicketPrice.setText(Integer.toString(tmpEvent.getTicketPrice()));
+            cbIsBoughtTicket.setSelected(tmpEvent.isBoughtTicket());
+        }
+
     }
 }
