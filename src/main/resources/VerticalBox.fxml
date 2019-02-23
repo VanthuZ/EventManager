@@ -12,28 +12,27 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox fx:controller="pl.home.EventManager.controller.VerticalBoxControler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.home.EventManager.controller.VerticalBoxControler">
    <children>
       <SplitPane dividerPositions="0.5" prefHeight="399.0" prefWidth="708.0">
          <items>
             <AnchorPane prefHeight="397.0" prefWidth="659.0">
                <children>
-                  <TableView  fx:id="tvEvents" layoutY="-2.0" prefHeight="357.0" prefWidth="246.0">
+                  <TableView fx:id="tvEvents" layoutY="-2.0" prefHeight="357.0" prefWidth="246.0">
                     <columns>
-                      <TableColumn prefWidth="110.0" text="Nazwa" />
-                      <TableColumn prefWidth="135.0" text="Data" />
+                      <TableColumn fx:id="columnName" prefWidth="110.0" text="Nazwa" />
+                      <TableColumn fx:id="columnDate" prefWidth="135.0" text="Data" />
                     </columns>
                   </TableView>
                   <CheckBox layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Pokaż wszystko" />
                </children>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="445.0">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="396.0" prefWidth="285.0">
                <children>
-                  <GridPane layoutX="8.0" layoutY="42.0" prefHeight="306.0" prefWidth="497.0">
+                  <GridPane layoutX="8.0" layoutY="42.0" prefHeight="306.0" prefWidth="365.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="118.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="360.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="277.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -55,7 +54,7 @@
                         <Label fx:id="lbTicketPrice" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <Button fx:id="btAdd" onAction="#newBTpress" layoutX="8.0" layoutY="348.0" mnemonicParsing="false" text="Dodaj" />
+                  <Button fx:id="btAdd" layoutX="8.0" layoutY="348.0" mnemonicParsing="false" onAction="#newBTpress" text="Dodaj" />
                   <Button fx:id="btEdit" layoutX="93.0" layoutY="348.0" mnemonicParsing="false" text="Edytuj" />
                   <Button fx:id="btDelete" layoutX="181.0" layoutY="348.0" mnemonicParsing="false" text="Usuń" />
                </children>

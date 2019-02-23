@@ -2,10 +2,10 @@ package pl.home.EventManager.model;
 
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.control.DatePicker;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -15,11 +15,34 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class Event {
 
-    private String name;
+    private StringProperty name;
     private LocalDate date;
     private String city;
     private int ticketPrice;
     private boolean isBoughtTicket;
+
+    public Event(String name, LocalDate date, int ticketPrice, boolean  isBoughtTicket){
+        this.name = new SimpleStringProperty(name);
+        this.date = date;
+        this.ticketPrice = ticketPrice;
+        this.isBoughtTicket = isBoughtTicket;
+
+    }
+
+
+    public String getName(){
+        return name.get();
+    }
+
+    public StringProperty nameProperty(){
+        return name;
+    }
+
+
+    public void setName(String name){
+        this.name.set(name);
+    }
+
 
 
 
