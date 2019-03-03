@@ -1,4 +1,7 @@
-.idea
-.out
-target
-*iml
+.idea 
+.out 
+target 
+*iml 
+*json 
+classes
+resources

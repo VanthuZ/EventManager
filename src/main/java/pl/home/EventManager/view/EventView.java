@@ -44,6 +44,7 @@ public class EventView {
         primaryStage.setTitle("Event Manager");
         primaryStage.setScene(new Scene(root));
         VerticalBoxControler verticalBoxControler = fxmlLoader.getController();
+        primaryStage.setResizable(false);
         verticalBoxControler.setEventView(this);
         primaryStage.show();
     }
@@ -55,8 +56,9 @@ public class EventView {
         Parent root = fxmlLoader.getRoot();
         Stage secondStage = new Stage();
         secondStage.initOwner(primaryStage);
-        secondStage.setTitle("Zarządzanie wydarzeniem");
+        secondStage.setTitle("Event Manager");
         secondStage.setScene(new Scene(root));
+        secondStage.setResizable(false);
         EventManagerController eventManagerController = fxmlLoader.getController();
         eventManagerController.setEventView(this, selectedEvent);
         secondStage.showAndWait();

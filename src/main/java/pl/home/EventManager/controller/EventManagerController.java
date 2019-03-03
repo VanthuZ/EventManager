@@ -2,19 +2,19 @@ package pl.home.EventManager.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class EventManagerController {
 
+    @FXML
+    private Label lbTitle;
     @FXML
     private Button btSave;
     @FXML
@@ -29,14 +29,32 @@ public class EventManagerController {
     private TextField tfTicketPrice;
     @FXML
     private CheckBox cbIsBoughtTicket;
-
+    private boolean editMode;
     private EventView eventView;
     private Event currentEvent;
 
     public void setEventView(EventView eventView, Event currentEvent){
         this.eventView = eventView;
-        this.currentEvent = new Event("", LocalDate.parse("2000-01-01"),10, false);
+        if(currentEvent == null) {
+            editMode = false;
+            this.currentEvent = new Event("", 10, false, "");
+        }else{
+            editMode = true;
+            setCurrentEvent(currentEvent);
+            this.currentEvent = currentEvent;
 
+        }
+
+
+    }
+
+    private void setCurrentEvent(Event currentEvent){
+        lbTitle.setText("Edycja wydarzenia");
+        tfName.setText(currentEvent.getName());
+        tfCity.setText(currentEvent.getCity());
+        tfTicketPrice.setText(Integer.toString(currentEvent.getTicketPrice()));
+        datePicker.setValue(LocalDate.parse(currentEvent.getDataString()));
+        cbIsBoughtTicket.setSelected(currentEvent.isBoughtTicket());
 
     }
 
@@ -49,16 +67,16 @@ public class EventManagerController {
 
     public void btSavePress() {
 
+        currentEvent.setName(tfName.getText());
+        //currentEvent.setDate(datePicker.getValue());
+        currentEvent.setCity(tfCity.getText());
+        currentEvent.setTicketPrice(Integer.parseInt(tfTicketPrice.getText()));
+        currentEvent.setBoughtTicket(cbIsBoughtTicket.isSelected());
+        currentEvent.setDataString(datePicker.getValue().toString());
 
-       currentEvent.setName(tfName.getText());
-       currentEvent.setDate(datePicker.getValue());
-       currentEvent.setCity(tfCity.getText());
-       currentEvent.setTicketPrice(Integer.parseInt(tfTicketPrice.getText()));
-       currentEvent.setBoughtTicket(cbIsBoughtTicket.isSelected());
 
-       eventView.getEventObservableList().add(currentEvent);
+        if(!editMode) eventView.getEventObservableList().add(currentEvent);
 
-       btCancelPress();
-
+        btCancelPress();
     }
 }

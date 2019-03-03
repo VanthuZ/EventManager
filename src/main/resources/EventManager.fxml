@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.home.EventManager.controller.EventManagerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="226.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.home.EventManager.controller.EventManagerController">
    <children>
       <GridPane layoutX="8.0" layoutY="42.0" prefHeight="163.0" prefWidth="389.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="118.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="360.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="85.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="304.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,11 +26,26 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nazwa" />
-            <Label text="Data" GridPane.rowIndex="1" />
-             <Label text="Miejscowość" GridPane.rowIndex="2" />
-            <Label text="Cena biletu" GridPane.rowIndex="3" />
-            <Label text="Kupiony bilet" GridPane.rowIndex="4" />
+            <Label text="Nazwa">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label text="Data" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+             <Label text="Miejscowość" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label text="Cena biletu" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label text="Kupiony bilet" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
             <TextField fx:id="tfName" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" />
              <TextField fx:id="tfCity" prefHeight="25.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tfTicketPrice" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -38,9 +53,12 @@
             <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="btSave" layoutX="347.0" layoutY="193.0" mnemonicParsing="false" onAction="#btSavePress" text="Zapisz" />
+      <Button fx:id="btSave" layoutX="347.0" layoutY="193.0" mnemonicParsing="false" onAction="#btSavePress" text="Zapisz">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Button fx:id="btCancel" layoutX="273.0" layoutY="193.0" mnemonicParsing="false" onAction="#btCancelPress" text="Anuluj" />
-      <Label layoutX="97.0" layoutY="14.0" prefHeight="27.0" prefWidth="352.0" text="Dodawanie wydarzenia">
+      <Label fx:id="lbTitle" layoutX="97.0" layoutY="14.0" prefHeight="27.0" prefWidth="352.0" text="Dodawanie wydarzenia">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

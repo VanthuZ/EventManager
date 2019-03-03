@@ -37,40 +37,62 @@ public class VerticalBoxControler implements Initializable {
     @FXML
     private TableColumn<Event, String> columnName;
     @FXML
-    private TableColumn<Event, LocalDate> columnDate;
+    private TableColumn<Event, String> columnDate;
+
 
     private EventView eventView;
 
     public void setEventView(EventView eventView){
         this.eventView = eventView;
         tvEvents.setItems(eventView.getEventObservableList());
-
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
       columnName.setCellValueFactory(c ->  c.getValue().nameProperty());
-      columnDate.setCellValueFactory(c -> c.getValue().getDate());
+      columnDate.setCellValueFactory(c -> c.getValue().dataStringProperty());
 
     }
 
 
 
-    public void newBTpress(ActionEvent actionEvent) throws IOException {
-       eventView.loadNewEventView(null);
-    }
+
 
     public void viewEvent() {
 
         Event tmpEvent = tvEvents.getSelectionModel().getSelectedItem();
         if(tmpEvent != null){
             lbName.setText(tmpEvent.getName());
-            lbDate.setText(tmpEvent.getDate().getValue().toString());
+            lbDate.setText(tmpEvent.getDataString());
             lbCity.setText(tmpEvent.getCity());
             lbTicketPrice.setText(Integer.toString(tmpEvent.getTicketPrice()));
             cbIsBoughtTicket.setSelected(tmpEvent.isBoughtTicket());
         }
+
+    }
+
+    public void newBTpress(ActionEvent actionEvent) throws IOException {
+        eventView.loadNewEventView(null);
+    }
+
+    public void BTeditpress() throws IOException {
+
+        eventView.loadNewEventView(tvEvents.getSelectionModel().getSelectedItem());
+    }
+
+    public void BTdelpress(ActionEvent actionEvent) {
+        eventView.getEventObservableList().remove(tvEvents.getSelectionModel().getSelectedItem());
+        clearView();
+    }
+
+    private void  clearView(){
+        lbName.setText("");
+        lbDate.setText("");
+        lbTicketPrice.setText("");
+        lbCity.setText("");
+        cbIsBoughtTicket.setSelected(false);
 
     }
 }
