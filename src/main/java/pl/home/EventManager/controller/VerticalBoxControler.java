@@ -4,14 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
-
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class VerticalBoxControler implements Initializable {
@@ -38,8 +34,6 @@ public class VerticalBoxControler implements Initializable {
     private TableColumn<Event, String> columnName;
     @FXML
     private TableColumn<Event, String> columnDate;
-
-
     private EventView eventView;
 
     public void setEventView(EventView eventView){
@@ -47,18 +41,11 @@ public class VerticalBoxControler implements Initializable {
         tvEvents.setItems(eventView.getEventObservableList());
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
       columnName.setCellValueFactory(c ->  c.getValue().nameProperty());
       columnDate.setCellValueFactory(c -> c.getValue().dataStringProperty());
-
     }
-
-
-
-
 
     public void viewEvent() {
 
@@ -73,7 +60,7 @@ public class VerticalBoxControler implements Initializable {
 
     }
 
-    public void newBTpress(ActionEvent actionEvent) throws IOException {
+    public void newBTpress() throws IOException {
         eventView.loadNewEventView(null);
     }
 
@@ -82,7 +69,7 @@ public class VerticalBoxControler implements Initializable {
         eventView.loadNewEventView(tvEvents.getSelectionModel().getSelectedItem());
     }
 
-    public void BTdelpress(ActionEvent actionEvent) {
+    public void BTdelpress() {
         eventView.getEventObservableList().remove(tvEvents.getSelectionModel().getSelectedItem());
         clearView();
     }
@@ -93,6 +80,5 @@ public class VerticalBoxControler implements Initializable {
         lbTicketPrice.setText("");
         lbCity.setText("");
         cbIsBoughtTicket.setSelected(false);
-
     }
 }

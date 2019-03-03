@@ -2,7 +2,7 @@ package pl.home.EventManager;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import pl.home.EventManager.model.SaveAndReadData;
+import pl.home.EventManager.controller.SaveAndReadData;
 import pl.home.EventManager.view.EventView;
 
 import java.io.IOException;

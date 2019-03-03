@@ -1,15 +1,12 @@
 package pl.home.EventManager.controller;
 
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 
 public class EventManagerController {
 
@@ -34,6 +31,7 @@ public class EventManagerController {
     private Event currentEvent;
 
     public void setEventView(EventView eventView, Event currentEvent){
+
         this.eventView = eventView;
         if(currentEvent == null) {
             editMode = false;
@@ -42,10 +40,7 @@ public class EventManagerController {
             editMode = true;
             setCurrentEvent(currentEvent);
             this.currentEvent = currentEvent;
-
         }
-
-
     }
 
     private void setCurrentEvent(Event currentEvent){
@@ -55,10 +50,7 @@ public class EventManagerController {
         tfTicketPrice.setText(Integer.toString(currentEvent.getTicketPrice()));
         datePicker.setValue(LocalDate.parse(currentEvent.getDataString()));
         cbIsBoughtTicket.setSelected(currentEvent.isBoughtTicket());
-
     }
-
-
 
     public void btCancelPress() {
         Stage currentStage = (Stage)btCancel.getScene().getWindow();
@@ -68,12 +60,10 @@ public class EventManagerController {
     public void btSavePress() {
 
         currentEvent.setName(tfName.getText());
-        //currentEvent.setDate(datePicker.getValue());
         currentEvent.setCity(tfCity.getText());
         currentEvent.setTicketPrice(Integer.parseInt(tfTicketPrice.getText()));
         currentEvent.setBoughtTicket(cbIsBoughtTicket.isSelected());
         currentEvent.setDataString(datePicker.getValue().toString());
-
 
         if(!editMode) eventView.getEventObservableList().add(currentEvent);
 

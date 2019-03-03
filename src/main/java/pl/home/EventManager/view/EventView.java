@@ -6,14 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.objects.annotations.Constructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import pl.home.EventManager.controller.EventManagerController;
 import pl.home.EventManager.controller.VerticalBoxControler;
 import pl.home.EventManager.model.Event;
-
-
 import java.io.IOException;
 
 
@@ -22,10 +17,8 @@ public class EventView {
     private Stage primaryStage;
     private ObservableList<Event> eventObservableList = FXCollections.observableArrayList();
 
-
     public EventView(Stage primaryStage) {
         this.primaryStage = primaryStage;
-
     }
 
     public ObservableList<Event> getEventObservableList() {
@@ -62,8 +55,5 @@ public class EventView {
         EventManagerController eventManagerController = fxmlLoader.getController();
         eventManagerController.setEventView(this, selectedEvent);
         secondStage.showAndWait();
-
     }
-
-
 }
