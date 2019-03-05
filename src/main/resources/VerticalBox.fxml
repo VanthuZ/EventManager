@@ -29,7 +29,7 @@
             </AnchorPane>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="291.0" prefWidth="241.0">
                <children>
-                  <GridPane layoutX="9.0" layoutY="23.0" prefHeight="197.0" prefWidth="192.0">
+                  <GridPane layoutX="17.0" layoutY="23.0" prefHeight="197.0" prefWidth="192.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0" prefWidth="85.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="116.0" />
@@ -72,6 +72,21 @@
                   <Button fx:id="btAdd" layoutX="8.0" layoutY="241.0" mnemonicParsing="false" onAction="#newBTpress" text="Dodaj" />
                   <Button fx:id="btEdit" layoutX="64.0" layoutY="241.0" mnemonicParsing="false" onAction="#BTeditpress" text="Edytuj" />
                   <Button fx:id="btDelete" layoutX="134.0" layoutY="241.0" mnemonicParsing="false" onAction="#BTdelpress" text="Usuń" />
+                  <Label layoutX="125.0" layoutY="6.0" prefHeight="17.0" prefWidth="56.0" text="Pozostało">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="daysToEvent" layoutX="185.0" layoutY="4.0" prefHeight="20.0" prefWidth="38.0" text="XX">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="210.0" layoutY="6.0" prefHeight="17.0" prefWidth="27.0" text="dni">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </items>

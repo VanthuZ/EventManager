@@ -6,6 +6,8 @@ import pl.home.EventManager.controller.SaveAndReadData;
 import pl.home.EventManager.view.EventView;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Main extends Application {
     EventView eventView;
@@ -18,8 +20,6 @@ public class Main extends Application {
         eventView = new EventView(primaryStage);
         SaveAndReadData.loadData(eventView);
         eventView.loadView();
-
-
     }
     @Override
     public void stop() throws IOException {

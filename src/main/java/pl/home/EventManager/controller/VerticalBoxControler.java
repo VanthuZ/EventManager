@@ -8,6 +8,8 @@ import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 public class VerticalBoxControler implements Initializable {
@@ -34,6 +36,8 @@ public class VerticalBoxControler implements Initializable {
     private TableColumn<Event, String> columnName;
     @FXML
     private TableColumn<Event, String> columnDate;
+    @FXML
+    private Label daysToEvent;
     private EventView eventView;
 
     public void setEventView(EventView eventView){
@@ -56,6 +60,9 @@ public class VerticalBoxControler implements Initializable {
             lbCity.setText(tmpEvent.getCity());
             lbTicketPrice.setText(Integer.toString(tmpEvent.getTicketPrice()));
             cbIsBoughtTicket.setSelected(tmpEvent.isBoughtTicket());
+            daysToEvent.setText(Long.toString(
+                    ChronoUnit.DAYS.between(
+                            LocalDate.now(), LocalDate.parse(tmpEvent.getDataString()))));
         }
 
     }
