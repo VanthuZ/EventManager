@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import pl.home.EventManager.model.Event;
 import pl.home.EventManager.view.EventView;
 import java.io.IOException;
@@ -53,19 +54,32 @@ public class VerticalBoxControler implements Initializable {
 
     public void viewEvent() {
 
-        Event tmpEvent = tvEvents.getSelectionModel().getSelectedItem();
-        if(tmpEvent != null){
-            lbName.setText(tmpEvent.getName());
-            lbDate.setText(tmpEvent.getDataString());
-            lbCity.setText(tmpEvent.getCity());
-            lbTicketPrice.setText(Integer.toString(tmpEvent.getTicketPrice()));
-            cbIsBoughtTicket.setSelected(tmpEvent.isBoughtTicket());
-            daysToEvent.setText(Long.toString(
-                    ChronoUnit.DAYS.between(
-                            LocalDate.now(), LocalDate.parse(tmpEvent.getDataString()))));
+        Event currentEvent = tvEvents.getSelectionModel().getSelectedItem();
+        if(currentEvent != null){
+            lbName.setText(currentEvent.getName());
+            lbDate.setText(currentEvent.getDataString());
+            lbCity.setText(currentEvent.getCity());
+            lbTicketPrice.setText(Integer.toString(currentEvent.getTicketPrice()));
+            cbIsBoughtTicket.setSelected(currentEvent.isBoughtTicket());
+            daysToEvent.setText(Long.toString(calculateDaysToEvent(currentEvent)));
+            colorNumberOfDaysToEvent(currentEvent);
         }
 
     }
+
+    private long calculateDaysToEvent(Event currentEvent){
+        return  ChronoUnit.DAYS.between(
+                LocalDate.now(), LocalDate.parse(currentEvent.getDataString()));
+    }
+
+    private void colorNumberOfDaysToEvent(Event curentEvent){
+        if (calculateDaysToEvent(curentEvent) <= 3){
+            daysToEvent.setTextFill(Color.RED);
+        }else{
+           daysToEvent.setTextFill(Color.BLACK);
+        }
+    }
+ 
 
     public void newBTpress() throws IOException {
         eventView.loadNewEventView(null);
